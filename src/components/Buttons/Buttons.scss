@@ -1,0 +1,21 @@
+@use '../../styles/partials/variables' as *;
+
+.buttons {
+    width: 60%;
+    height: 8vw;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+
+    &__button {
+        width: 45%;
+
+        background-color: $nasa-red;
+        border: none;
+        border-radius: 10px;
+
+        font-size: 1.1rem;
+    }
+}

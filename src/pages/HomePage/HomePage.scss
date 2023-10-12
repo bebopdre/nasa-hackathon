@@ -1,3 +1,5 @@
+@use '../../styles/global.scss' as *;
+
 $starFieldWidth: 2560;
 $starFieldHeight: 2560;
 $starStartOffset: 600px;
@@ -10,11 +12,6 @@ $numStarTwoStars: 700;
 $numStarThreeStars: 200;
 $numShootingStars: 10;
 $width: 100%;
-
-* {
-    padding: 0;
-    margin: 0;
-}
 
 .home-page {
     position: relative;

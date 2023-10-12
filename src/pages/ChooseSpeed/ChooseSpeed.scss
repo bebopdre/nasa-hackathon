@@ -1,0 +1,67 @@
+@use '../../styles/global.scss' as *;
+@use '../../styles/partials/variables' as *;
+
+.choose-speed {
+    @extend .main-background;
+    height: 100vh;
+
+    &__description {
+        font-size: 1rem;
+        line-height: 1.7rem;
+        margin-bottom: 6vw;
+    }
+
+    &__main {
+
+        &-cards {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            list-style-type: none;
+        }
+
+        &-card {
+            width: 90%;
+            height: 35vw;
+
+            padding: 2vw;
+            margin: 4vw 0;
+
+            border: .5px solid $nasa-white;
+            border-radius: 10px;
+
+            background-position: center;
+            background-size: cover;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            &--helical {
+                background-image: url('../../assets/backgrounds/helical-engine.png');
+            }
+
+            &--scenic {
+                background-image: url('../../assets/backgrounds/scenic-route.png');
+            }
+
+            &-top {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &-bottom {
+                display: flex;
+                justify-content: flex-end;
+
+                &-writing {
+                    padding-bottom: .3vw;
+                    margin-right: 1vw;
+                    border-bottom: .5px solid $nasa-white;
+                }
+            }
+        }
+    }
+}
