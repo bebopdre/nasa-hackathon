@@ -1,6 +1,54 @@
 @use '../../styles/global.scss' as *;
+@use '../../styles/partials/variables' as *;
 
 .choose-dates {
     @extend .main-background;
     height: 100vh;
+
+    &__picker {
+        border: 1px solid $nasa-white;
+        border-radius: 10px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 15vw;
+        padding: 0 2vw;
+
+        &-box {
+            display: flex;
+            justify-content: space-between;
+
+            width: 40%;
+            height: 60%;
+
+            &-pm {
+                border: .5px solid $nasa-white;
+                border-radius: 10px;
+
+                width: 25%;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &--phantom {
+                    color: darkgray;
+                    border: .5px solid darkgray;
+                }
+            }
+
+            &-passengers {
+                @extend .choose-dates__picker-box-pm;
+                width: 40%;
+            }
+
+        }
+
+    }
+}
+
+.off {
+    display: none;
 }
