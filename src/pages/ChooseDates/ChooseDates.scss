@@ -47,6 +47,18 @@
         }
 
     }
+
+    &__dates {
+        &-box {
+            @extend .choose-dates__picker;
+            padding: 0 4vw;
+        }
+
+        &-calendar {
+            width: 6vw;
+            height: 6vw;
+        }
+    }
 }
 
 .off {

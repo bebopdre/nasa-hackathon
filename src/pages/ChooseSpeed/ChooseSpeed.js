@@ -5,6 +5,9 @@ import info from '../../assets/icons/info.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import Buttons from '../../components/Buttons/Buttons';
 
+import { useState } from 'react';
+import Modal from '../../components/Modal/Modal';
+
 const speedCards = [
     {
         id: 1,
@@ -21,38 +24,51 @@ const speedCards = [
 ];
 
 function ChooseSpeed() {
-    return (
-        <main className='choose-speed'>
-            <TopNav centered={false} />
-            <p className='choose-speed__description'>Embark on a journey to the enigmatic Red Planet, where adventure beckons at your own pace. Choose the high-speed sprint for a thrilling arrival within hours, or indulge in a luxurious, leisurely cruise through space. Whichever you pick, the allure of Mars awaits.</p>
-            <section className='choose-speed__main'>
-                <h2 className='choose-speed__main-heading'>
-                    Choose your speed:
-                </h2>
-                <ul className='choose-speed__main-cards'>
-                    {
-                        speedCards.map( card => {
-                            return (
-                                <li key={card.id} className={card.background}>
-                                    <div className='choose-speed__main-card-top'>
-                                        <h2 className='choose-speed__main-card-top-heading'>
-                                            {card.title}
-                                        </h2>
-                                        <img src={info}></img>
-                                    </div>
-                                    <div className='choose-speed__main-card-bottom'>
-                                        <p className='choose-speed__main-card-bottom-writing'>Select</p>
-                                        <img src={arrowRight}></img>
-                                    </div>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
-                <Buttons directions={['Previous', 'Next']} />
-            </section>
 
-        </main>
+    const [infoModal, setInfoModal] = useState(false);
+    const [modalInfo, setModalInfo] = useState('');
+
+    function handleInfoModal(id) {
+        setModalInfo(speedCards[id-1].info);
+        setInfoModal(true);
+    }
+
+    return (
+        <>
+            <Modal writing={modalInfo} show={infoModal} setInfoModal={setInfoModal} />
+            <main className='choose-speed'>
+                <TopNav centered={false} />
+                <p className='choose-speed__description'>Embark on a journey to the enigmatic Red Planet, where adventure beckons at your own pace. Choose the high-speed sprint for a thrilling arrival within hours, or indulge in a luxurious, leisurely cruise through space. Whichever you pick, the allure of Mars awaits.</p>
+                <section className='choose-speed__main'>
+                    <h2 className='choose-speed__main-heading'>
+                        Choose your speed:
+                    </h2>
+                    <ul className='choose-speed__main-cards'>
+                        {
+                            speedCards.map( card => {
+                                return (
+                                    <li key={card.id} className={card.background}>
+                                        <div className='choose-speed__main-card-top'>
+                                            <h2 className='choose-speed__main-card-top-heading'>
+                                                {card.title}
+                                            </h2>
+                                            <img onClick={() => handleInfoModal(card.id)} src={info}></img>
+                                        </div>
+                                        <div className='choose-speed__main-card-bottom'>
+                                            <p className='choose-speed__main-card-bottom-writing'>Select</p>
+                                            <img src={arrowRight}></img>
+                                        </div>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                    <Buttons directions={['Previous', 'Next']} />
+                </section>
+
+            </main>
+        </>
+        
     )
 }
 
