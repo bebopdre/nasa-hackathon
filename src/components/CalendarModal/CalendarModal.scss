@@ -1,0 +1,42 @@
+@use '../Modal/Modal.scss' as *;
+@use '../../styles/partials/variables' as *;
+
+.calendar-modal {
+    @extend .modal;
+
+    &__card {
+        @extend .modal__card;
+
+        &-top {
+            @extend .modal__card-top;
+        }
+    }
+
+    &__heading {
+        color: black;
+    }
+
+    &__date {
+        background-color: $nasa-blue;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px 0px rgba($nasa-blue, 0.5);
+
+        width: 95%;
+        height: 10vw;
+        margin: 4vw 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 1.8rem;
+
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    &__description {
+        color: black;
+    }
+}

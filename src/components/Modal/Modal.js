@@ -2,7 +2,7 @@ import './Modal.scss';
 
 import x from '../../assets/icons/EX.svg';
 
-function Modal({type, showCalendarModal, setShowCalendarModal, writing, show, setInfoModal}) {
+function Modal({writing, show, setInfoModal}) {
     return (
         <section className={show ? 'modal' : 'off'}>
             <div className='modal__card'>

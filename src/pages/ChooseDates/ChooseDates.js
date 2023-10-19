@@ -4,16 +4,24 @@ import './ChooseDates.scss';
 
 import calendar from '../../assets/icons/Calendar white.svg';
 
-import { useState } from 'react';
-import Modal from '../../components/Modal/Modal';
+import { useState, useEffect } from 'react';
+import CalendarModal from '../../components/CalendarModal/CalendarModal';
 
 function ChooseDates() {
     const [numPassengers, setNumPassengers] = useState(0);
     const [showCalendarModal, setShowCalendarModal] = useState(false);
+    const [travelDates, setTravelDates] = useState('');
+    const [price, setPrice] = useState(0);
+
+    useEffect( () => {
+
+        setPrice((prev) => prev += (numPassengers * 500));
+
+    }, [numPassengers])
 
     return (
         <>
-            <Modal type={'calendar'} showCalendarModal={showCalendarModal} setShowCalendarModal={setShowCalendarModal}/>
+            <CalendarModal setPrice={setPrice} setTravelDates={setTravelDates} showCalendarModal={showCalendarModal} setShowCalendarModal={setShowCalendarModal}/>
             <main className='choose-dates'>
                 <TopNav centered={false} />
                 <section className='choose-dates__description'>
@@ -52,8 +60,20 @@ function ChooseDates() {
                     </h2>
 
                     <div className='choose-dates__dates-box'>
-                        <p></p>
-                        <img onClick={() => showCalendarModal(true)} className='choose-dates__dates-calendar' src={calendar} />
+                        <p>{travelDates}</p>
+                        <img onClick={() => setShowCalendarModal(true)} className='choose-dates__dates-calendar' src={calendar} />
+                    </div>
+                </section>
+
+                <section className='choose-dates__prices'>
+                    <h2 className='choose-dates__prices-heading'>
+                        Prices starting at:
+                    </h2>
+
+                    <div className='choose-dates__prices-box'>
+                        <p>ñ</p>
+                        <p>{price}.00</p>
+                        <p>per person</p>
                     </div>
                 </section>
                 <Buttons directions={['Previous', 'Next']} />
