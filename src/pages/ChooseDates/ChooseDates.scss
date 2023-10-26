@@ -59,6 +59,29 @@
             height: 6vw;
         }
     }
+
+    &__prices {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+
+        &-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 50%;
+            height: 8vw;
+
+            padding: 2vw 4vw;
+
+            border: 1px solid $nasa-white;
+            border-radius: 10px;
+
+        }
+    }
 }
 
 .off {

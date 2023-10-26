@@ -4,22 +4,26 @@ import './ChooseSpeed.scss';
 import info from '../../assets/icons/info.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import Buttons from '../../components/Buttons/Buttons';
+import checkmarkWhite from '../../assets/icons/checkmarkWhite.svg';
 
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal';
+import Dock from '../../components/Dock/Dock';
 
 const speedCards = [
     {
         id: 1,
         title: 'Direct Route',
         background: 'choose-speed__main-card choose-speed__main-card--helical',
-        info: 'Thanks to its Helical engine, which utilizes the change in mass at relativistic speeds as its basis for operation,the Celeritas will get you to Mars in 12.5 minutes. You will fall asleep and wake up on The Red Planet.'
+        info: 'Thanks to its Helical engine, which utilizes the change in mass at relativistic speeds as its basis for operation,the Celeritas will get you to Mars in 12.5 minutes. You will fall asleep and wake up on The Red Planet.',
+        selected: false
     },
     {
         id: 2,
         title: 'Scenic Route',
         background: 'choose-speed__main-card choose-speed__main-card--scenic',
-        info: 'Take a 7-10 month scenic trip aboard Voyager 123. Experience breath-taking views of the cosmos and luxurious accommodations in this all-inclusive journey. '
+        info: 'Take a 7-10 month scenic trip aboard Voyager 123. Experience breath-taking views of the cosmos and luxurious accommodations in this all-inclusive journey. ',
+        selected: false
     }
 ];
 
@@ -31,6 +35,11 @@ function ChooseSpeed() {
     function handleInfoModal(id) {
         setModalInfo(speedCards[id-1].info);
         setInfoModal(true);
+    }
+
+    function handleSpeedSelect(id) {
+        let selectedSpeed = speedCards.find( speed => (speed.id === id) );
+        (selectedSpeed) ? (selectedSpeed = false) : (selectedSpeed = true);
     }
 
     return (
@@ -54,9 +63,9 @@ function ChooseSpeed() {
                                             </h2>
                                             <img onClick={() => handleInfoModal(card.id)} src={info}></img>
                                         </div>
-                                        <div className='choose-speed__main-card-bottom'>
+                                        <div onClick={ () => handleSpeedSelect(card.id) } className='choose-speed__main-card-bottom'>
                                             <p className='choose-speed__main-card-bottom-writing'>Select</p>
-                                            <img src={arrowRight}></img>
+                                            <img className='choose-speed__main-card-bottom-icon' src={card.selected ? checkmarkWhite : arrowRight}></img>
                                         </div>
                                     </li>
                                 )

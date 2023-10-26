@@ -3,7 +3,7 @@
 
 .choose-speed {
     @extend .main-background;
-    height: 100vh;
+    height: 110vh;
 
     &__description {
         font-size: 1rem;
@@ -55,11 +55,17 @@
             &-bottom {
                 display: flex;
                 justify-content: flex-end;
+                align-items: center;
 
                 &-writing {
                     padding-bottom: .3vw;
                     margin-right: 1vw;
                     border-bottom: .5px solid $nasa-white;
+                }
+
+                &-icon {
+                    width: 3vw;
+                    height: 3vw;
                 }
             }
         }

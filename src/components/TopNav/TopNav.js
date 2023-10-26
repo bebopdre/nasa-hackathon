@@ -1,6 +1,6 @@
 import './TopNav.scss';
 
-import logo from '../../assets/logo/logo.png';
+import logo from '../../assets/logo/logoFinal.png';
 import hamburger from '../../assets/icons/hamburger-menu.png';
 
 function TopNav({centered}){
